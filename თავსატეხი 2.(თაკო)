@@ -1,0 +1,31 @@
+# სელებრითების დროის ინტერვალები და წონები (წონა ნიშნავს რამდენად სასურველია მათთან შეხვედრა,არის მე-3 ელემენტი)
+celebrity = {
+    "Beyonce": [6, 7, 3],
+    "Taylor": [7, 9, 8],
+    "Brad": [10, 11, 2],
+    "Katy": [10, 12, 1],
+    "Tom": [8, 10, 1],
+    "Drake": [9, 11, 1],
+    "Alicia": [6, 8, 7]
+}
+
+# ცვლადში ვათავსებთ სელებრითების დროების და წონების ჩამონათვალს
+celebrity_times = [i for i in celebrity.values()]
+
+# ფუნქცია საუკეთესო დროისმოსაძებნად, სადაც სელებრითების წონის ჯამი მაქსიმალურია
+def getBest(celebrity_times):
+    timetable = [0] * 24  # დროის სია 24 საათიანი
+
+    # ვწერთ თითოეულ სელებრითის დროის ინტერვალებს
+    for start, end, weight in celebrity_times:
+        # თითოეული საათისთვის ინტერვალიდან ვამატებთ სელებრითის წონას
+        for time in range(start, end):
+            timetable[time] += weight
+
+    # ვპოულობთ საათს, სადაც წონის ჯამი მაქსიმალურია
+    best_hour = timetable.index(max(timetable))
+    return best_hour
+
+# ვიძახებთ ფუნქციას და ვბეჭდავთ საუკეთესო დროს
+best_hour = getBest(celebrity_times)
+print(f"წონის მიხედვით მისვლის საუკეთესო დროა {best_hour}:00")
