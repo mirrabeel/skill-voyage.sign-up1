@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <label for="username">Username</label>
+        {{ form.username }}
+        <label for="email">Email</label>
+        {{ form.email }}
+        <label for="password">Password</label>
+        {{ form.password }}
+        {{ form.submit }}
+    </form>
+
+<!-- templates/create_project.html -->
+    <h1>Create a New Project</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!-- CSRF Token  -->
+        <div>
+            <label for="title">Project Title:</label>
+            {{ form.title() }}  <!-- პროექტის სათაური Input -->
+        </div>
+        <div>
+            <label for="description">Project Description:</label>
+            {{ form.description() }}  <!-- პროექტების აღწერა input -->
+        </div>
+        <div>
+            {{ form.submit() }}  <!-- Submit ღილაკი -->
+        </div>
+    </form>
+</body>
+</html>
